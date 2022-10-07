@@ -47,26 +47,30 @@ Install-Package Grpc.Tools
 
 1. Right-click the project and select Edit Project File.
 2. Add an item group with a <Protobuf> element that refers to the greet.proto file:
-`<ItemGroup>
-  <Protobuf Include="Protos\greet.proto" GrpcServices="Client" />
-</ItemGroup>`
+  ```
+  <ItemGroup>
+    <Protobuf Include="Protos\greet.proto" GrpcServices="Client" />
+  </ItemGroup>
+  ```
 
 ## Create the Greeter client
 
 1. Build the client project to create the types in the GrpcGreeterClient namespace.
 2. Update the gRPC client Program.cs file with the following code.
-  `using System.Threading.Tasks;
-using Grpc.Net.Client;
-using GrpcGreeterClient;
+  ```
+  using System.Threading.Tasks;
+  using Grpc.Net.Client;
+  using GrpcGreeterClient;
 
-// The port number must match the port of the gRPC server.
-using var channel = GrpcChannel.ForAddress("https://localhost:7042");
-var client = new Greeter.GreeterClient(channel);
-var reply = await client.SayHelloAsync(
-                  new HelloRequest { Name = "GreeterClient" });
-Console.WriteLine("Greeting: " + reply.Message);
-Console.WriteLine("Press any key to exit...");
-Console.ReadKey();`
+  // The port number must match the port of the gRPC server.
+  using var channel = GrpcChannel.ForAddress("https://localhost:7042");
+  var client = new Greeter.GreeterClient(channel);
+  var reply = await client.SayHelloAsync(
+                    new HelloRequest { Name = "GreeterClient" });
+  Console.WriteLine("Greeting: " + reply.Message);
+  Console.WriteLine("Press any key to exit...");
+  Console.ReadKey();
+  ```
 
 3. In the preceding highlighted code, replace the localhost port number 7042 with the HTTPS port number specified in Properties/launchSettings.json within the GrpcGreeter service project.
 
@@ -77,5 +81,7 @@ Console.ReadKey();`
 
 # Output
 
-`Greeting: Hello GreeterClient
-Press any key to exit...`
+```
+Greeting: Hello GreeterClient
+Press any key to exit...
+```
