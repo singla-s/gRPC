@@ -2,10 +2,11 @@
 implement gRPC client and server and establish communication between them.
 
 In this tutorial, you:
-
+```
 Create a gRPC Server.
 Create a gRPC client.
 Test the gRPC client with the gRPC Greeter service.
+```
 
 # Create a gRPC service
 
